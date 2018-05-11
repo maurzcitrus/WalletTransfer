@@ -1,0 +1,1 @@
+pandoc -s -o Team-stateless-Enterprise-Java-CA-1.docx index.md use-our-application.md setup-mysql-database.md setup-and-run-in-netbeans.md filter-message.md 
