@@ -151,7 +151,8 @@ public class TransactionDaoMySql implements TransactionDao{
               + "from_account,\n"
               + "to_account,\n"
               + "type,\n"
-              + "transfer_amount\n"
+              + "transfer_amount,\n"
+              + "transaction_time\n"
               + "from wallet.accounttransaction\n"
               + "WHERE (from_account = ?)";
         
@@ -166,6 +167,7 @@ public class TransactionDaoMySql implements TransactionDao{
           transaction.setTo(u.getString("to_account"));
           transaction.setType(u.getString("type"));
           transaction.setTransferAmount(u.getBigDecimal("transfer_amount"));
+          transaction.setDatetime(u.getTimestamp("transaction_time"));
           return transaction;
         });
         
