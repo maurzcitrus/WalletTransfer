@@ -16,7 +16,7 @@ import java.util.List;
  */
 public interface TransactionDao {
    
-     public String transferAmount(Transaction currentTransaction);
+     public Transaction transferAmount(Transaction currentTransaction);
      
      public Transaction getLatestTransactions(String email);
 }

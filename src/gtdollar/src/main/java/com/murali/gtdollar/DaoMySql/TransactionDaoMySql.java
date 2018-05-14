@@ -17,6 +17,8 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 
 
 /**
@@ -26,7 +28,7 @@ import java.util.logging.Logger;
 public class TransactionDaoMySql implements TransactionDao{
 
     @Override
-    public String transferAmount(Transaction CurrentTransaction) {
+    public Transaction transferAmount(Transaction CurrentTransaction) {
         
     String debitTransferer = prepareDebitTransferer();
     String updateTransaction = prepareUpdateTransaction();
@@ -47,9 +49,11 @@ public class TransactionDaoMySql implements TransactionDao{
         try {
             query.transfer();
         } catch (SQLException ex) {
-            Logger.getLogger(TransactionDaoMySql.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    return CurrentTransaction.getSuccess();    
+            throw new WebApplicationException("Transaction Failure", Response.Status.CONFLICT);
+        }  
+     
+        Transaction created = findOneTransaction(CurrentTransaction.getFrom());
+        return created;
     }
 
     @Override
@@ -81,14 +85,16 @@ public class TransactionDaoMySql implements TransactionDao{
       + "from_account,\n"
       + "to_account,\n"
       + "transfer_amount,\n"
-      + "transaction_time\n"           
+      + "transaction_time,\n"
+      + "success"           
       + ")\n"
       + "VALUES\n"
       + "(\n"
       + "  ?,\n"
       + "  ?,\n"
       + "  ?,\n"
-      + "  ?\n"
+      + "  ?,\n"
+      + "  ?"
       + ")";
       
      return updateTransaction; 
@@ -117,6 +123,7 @@ public class TransactionDaoMySql implements TransactionDao{
            p.setString(2, currentTransaction.getTo());
            p.setBigDecimal(3, currentTransaction.getTransferAmount());
            p.setTimestamp(4, getCurrentTimeStamp());
+           p.setString(5, currentTransaction.getSuccess());
        };
     }
 
@@ -191,4 +198,25 @@ public class TransactionDaoMySql implements TransactionDao{
    
     return query.findOne();
     }
+    
+    private Transaction findOneTransaction(String from) {
+       String sql
+        = "SELECT\n"
+              + "success\n"
+              + "FROM wallet.accounttransaction\n"
+              + "WHERE (from_account = ?)"; 
+       
+    MySqlQuery query = new MySqlQuery(sql, 
+    (s) -> {
+        s.setString(1, from);
+    },  
+    (r) -> {
+      Transaction a = new Transaction();
+      a.setSuccess((r.getString("success")));
+      return a;
+    });
+   
+    return query.findOne();
+    }
+
 }

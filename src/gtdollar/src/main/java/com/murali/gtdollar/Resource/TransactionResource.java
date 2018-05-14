@@ -43,12 +43,12 @@ public class TransactionResource {
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
-  public String transferCredits(@PathParam("transferer") String transferer 
+  public Transaction transferCredits(@PathParam("transferer") String transferer 
             ,@PathParam("transferee") String transferee
             ,@PathParam("amount") BigDecimal transferAmount ) 
   {
   
-    String success;
+    Transaction success;
     
     Account fromAccount = accountDao.findOne(transferer);
     Account toAccount = accountDao.findOne(transferee);
@@ -63,6 +63,7 @@ public class TransactionResource {
     
     success = transactionDao.transferAmount(current);
     return success;
+    
     }else{
        throw new WebApplicationException("Please Provide Correct Details", Response.Status.BAD_REQUEST);
     }
@@ -76,7 +77,7 @@ public class TransactionResource {
       if(accountDao.findOne(email) != null){
         return transactionDao.getLatestTransactions(email);
       }else{
-          return null;
+          throw new WebApplicationException("Email Id not found", Response.Status.BAD_REQUEST);
       }
   }
 

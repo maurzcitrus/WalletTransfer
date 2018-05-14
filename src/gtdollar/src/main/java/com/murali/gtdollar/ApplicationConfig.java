@@ -20,6 +20,8 @@ public class ApplicationConfig extends Application{
   }
   
    private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(com.murali.gtdollar.Resource.AccountResource.class);
+        resources.add(com.murali.gtdollar.Resource.TransactionResource.class);
    
    }
    

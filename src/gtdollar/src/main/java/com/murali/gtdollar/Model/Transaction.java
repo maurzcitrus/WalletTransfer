@@ -86,8 +86,6 @@ public class Transaction {
 
     public void setTransaction(List<Transaction> transaction) {
         this.transaction = transaction;
-    }
-
-    
+    }    
     
 }
