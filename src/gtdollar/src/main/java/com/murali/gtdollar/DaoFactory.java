@@ -5,10 +5,26 @@
  */
 package com.murali.gtdollar;
 
+import com.murali.gtdollar.Dao.AccountDao;
+import com.murali.gtdollar.Dao.TransactionDao;
+import com.murali.gtdollar.DaoMySql.AccountDaoMySql;
+import com.murali.gtdollar.DaoMySql.TransactionDaoMySql;
+
 /**
  *
  * @author MuraliKrishnaB
  */
 public class DaoFactory {
-    
+    /**
+   * Creates an instance of AccountDao.
+   *
+   * @return AccountDao instance.
+   */
+  public static AccountDao getAcountDao() {
+    return new AccountDaoMySql();
+  }
+  
+  public static TransactionDao getTransactionDao(){
+      return new TransactionDaoMySql();
+  }
 }
