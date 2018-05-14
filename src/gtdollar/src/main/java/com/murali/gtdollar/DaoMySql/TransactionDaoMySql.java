@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.murali.gtdollar.DaoImpl;
+package com.murali.gtdollar.DaoMySql;
 
 import com.murali.gtdollar.Dao.TransactionDao;
 import com.murali.gtdollar.Model.Account;
