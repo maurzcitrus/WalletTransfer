@@ -59,6 +59,7 @@ public class TransactionResource {
     current.setFrom(transferer);
     current.setTo(transferee);
     current.setSuccess("true");
+    current.setType("transfer");
     current.setTransferAmount(transferAmount.setScale(2, RoundingMode.CEILING));
     
     success = transactionDao.transferAmount(current);

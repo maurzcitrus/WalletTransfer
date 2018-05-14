@@ -87,12 +87,14 @@ public class TransactionDaoMySql implements TransactionDao{
       + "(\n"
       + "from_account,\n"
       + "to_account,\n"
+      + "type,\n"
       + "transfer_amount,\n"
       + "transaction_time,\n"
       + "success"           
       + ")\n"
       + "VALUES\n"
       + "(\n"
+      + "  ?,\n"
       + "  ?,\n"
       + "  ?,\n"
       + "  ?,\n"
@@ -124,9 +126,10 @@ public class TransactionDaoMySql implements TransactionDao{
        return (p) -> {
            p.setString(1, currentTransaction.getFrom());
            p.setString(2, currentTransaction.getTo());
-           p.setBigDecimal(3, currentTransaction.getTransferAmount());
-           p.setTimestamp(4, getCurrentTimeStamp());
-           p.setString(5, currentTransaction.getSuccess());
+           p.setString(3, currentTransaction.getType());
+           p.setBigDecimal(4, currentTransaction.getTransferAmount());
+           p.setTimestamp(5, getCurrentTimeStamp());
+           p.setString(6, currentTransaction.getSuccess());
        };
     }
 
@@ -147,6 +150,7 @@ public class TransactionDaoMySql implements TransactionDao{
         String sql = "select transaction_id,\n"
               + "from_account,\n"
               + "to_account,\n"
+              + "type,\n"
               + "transfer_amount\n"
               + "from wallet.accounttransaction\n"
               + "WHERE (from_account = ?)";
@@ -160,6 +164,7 @@ public class TransactionDaoMySql implements TransactionDao{
           transaction.setId(u.getInt("transaction_id"));
           transaction.setFrom(u.getString("from_account"));
           transaction.setTo(u.getString("to_account"));
+          transaction.setType(u.getString("type"));
           transaction.setTransferAmount(u.getBigDecimal("transfer_amount"));
           return transaction;
         });
