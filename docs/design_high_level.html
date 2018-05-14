@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>SE25-FT08 Phoenix Radio Management System – </title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href=".\css\base.css" type="text/css" />
+  <link rel="stylesheet" href=".\css\superfish-navbar-smoothness.css" type="text/css" />
+  <link rel="stylesheet" href=".\css\superfish-smoothness.css" type="text/css" />
+</head>
+<body>
+<header>
+  <div>
+    <span class="projectname">
+      <a href="index.html">Wallet Transfer</a>
+    </span>
+
+    <small>
+      <span class="projectversion">v1</span>
+    </small>
+  </div>
+</header>
+<nav>
+
+  <div class="sf-navbar">
+
+    <ul id="nav" class="sf-menu">
+
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+
+       <li>
+        <a href="#">Design</a>
+        <ul>
+             <li><a href="design_high_level.html">High Level Design</a></li>
+        </ul>
+
+       </li>
+
+
+    </ul>
+    <div style="clear:both"/>
+  </div>
+
+</nav>
+<h1 id="high-level-design">High Level Design</h1>
+<p>In this document, only design decisions and designs that deviate from original high level design are mentioned. Original high level design document (given in class, PRMS HLD v3.2) is still applicable.</p>
+<ul>
+<li><a href="#architecture-layers">Arcitecture Layers</a></li>
+<li><a href="#architectural-decisions">Architectural Decisions</a></li>
+<li><a href="#programming-language">Programming Language</a></li>
+<li><a href="#transition-of-static-structure">Transition of Static Structure</a></li>
+<li><a href="#transition-of-dynamic-interactions">Transition of Dynamic Interactions</a></li>
+</ul>
+<h2 id="architecture-layers">Architecture Layers</h2>
+<h3 id="rest-api-server">REST API Server</h3>
+<p>Each REST API is implemented with following layers:</p>
+<p>Business - Stateless</p>
+<ul>
+<li>Resource - defines REST API end points</li>
+</ul>
+<p>Data Access</p>
+<ul>
+<li>Dao - defines interfaces for data access objects</li>
+<li>DaoMySql - implements data access objects for MySql database</li>
+<li>Util - implements low level JDBC implementation for Dao classes. All Dao classes must use this for their JDBC calls.</li>
+</ul>
+<h2 id="architectural-decisions">Architectural Decisions</h2>
+<h3 id="technological">Technological</h3>
+<ol style="list-style-type: decimal">
+<li>The system is a with REST API with Jax-Rs Jersey Implemetation.</li>
+<li>Rest can also be implemented with Java EE or Spring which gives better handling of transactions.</li>
+<li>Business Stateless layer and Data Access layer are implemented using Java language and JAX-RS compliant application server, GlassFish 4.1.</li>
+<li>Data is persisted in MySQL Community Server 5.7.</li>
+<li>Test cases are implemeted using behaviour driven test using cucumber.</li>
+</ol>
+<h2 id="programming-language">Programming Language</h2>
+<p>REST API Server</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Package Description</td>
+</tr>
+</tbody>
+</table>
+<p>model domain classes for data transfer purpose</p>
+<p>Dao Interace that provides implementations.</p>
+<p>DaoMySql Implemenation class where the business resides.</p>
+<p>Resource Rest Api End points</p>
+<p>util low level implementation of JDBC calls to MySql database</p>
+<hr />
+<h3 id="using-lambda-expression-for-jdbc">Using Lambda Expression for JDBC</h3>
+<blockquote>
+<ul>
+<li>Always use lambda expression for JDBC database access to MySql database</li>
+<li>This is to avoid copy-pasting boilerplate JDBC codes in data acess classes</li>
+<li>Always use prepared statement to parameterized SQL statements with <code>?</code></li>
+<li><strong>Never</strong> concatenate SQL string and input values to form SQL Statements. This is to prevent SQL Injection</li>
+</ul>
+</blockquote>
+<h3 id="rest-api-naming-convention">REST API Naming Convention</h3>
+<p>Naming convention for REST API implementation are as follows:</p>
+<table>
+<colgroup>
+<col width="29%" />
+<col width="22%" />
+<col width="47%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Description</th>
+<th>HTTP Verb</th>
+<th align="left">Example (prefix with <code>/wallet</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">register account</td>
+<td>POST</td>
+<td align="left"><code>/register/{email}</code></td>
+</tr>
+<tr class="even">
+<td align="left">check Balance</td>
+<td>GET</td>
+<td align="left"><code>/account/{email}</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Transfer Amount</td>
+<td>POST</td>
+<td align="left"><code>/transaction/{transferer}/{transferee}/{amount}</code></td>
+</tr>
+<tr class="even">
+<td align="left">check Latest Transaction</td>
+<td>GET</td>
+<td align="left"><code>/transactions/{email}</code></td>
+</tr>
+</tbody>
+</table>
+<footer>
+  <div class="copyright">
+    Copyright @Murali.  All rights reserved.
+  </div>
+</footer>
+
+<!-- JavaScript at the bottom for fast page loading -->
+
+<script src="js/jquery.js"></script>
+<script src="js/hoverIntent.js"></script>
+<script src="js/superfish.js"></script>
+
+<!-- Our Own Scripts -->
+<script>
+  (function($){ //create closure so we can safely use $ as alias for jQuery
+
+    $(document).ready(function(){
+
+      $('nav ul.sf-menu').superfish({
+        //add options here if required
+      });
+    });
+
+  })(jQuery);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<footer>
+  <div class="copyright">
+    Copyright @Murali.  All rights reserved.
+  </div>
+</footer>
+
+<!-- JavaScript at the bottom for fast page loading -->
+
+<script src="js/jquery.js"></script>
+<script src="js/hoverIntent.js"></script>
+<script src="js/superfish.js"></script>
+
+<!-- Our Own Scripts -->
+<script>
+  (function($){ //create closure so we can safely use $ as alias for jQuery
+
+    $(document).ready(function(){
+
+      $('nav ul.sf-menu').superfish({
+        //add options here if required
+      });
+    });
+
+  })(jQuery);
+
+</script>

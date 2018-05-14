@@ -1,5 +1,6 @@
-# WalletTransfer
-A RESTful API to facilitate Wallet Transfer.
+# Wallet Transfer
+
+A Rest Api End point that allows to register, check balance and transfer amount to users.
 
 
 ### Technologies

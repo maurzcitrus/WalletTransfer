@@ -1,0 +1,309 @@
+/* 
+  Typography credits to http://fluidbaselinegrid.com
+  Custom jQuery UI tabs styles credits to http://keith-wood.name/uiTabs.html 
+ */
+
+
+/* HEADER -----------------------------------*/
+@media screen {
+  header{
+   text-align: center;
+   position: relative;
+  }
+
+  header .projectname{
+   font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+   font-weight: 300;
+   font-size: 1.75em;
+   line-height: 1.5em;
+  }
+
+  header .projectname a {
+    text-decoration: none;
+    color: #222;
+  }
+
+  header ul.links,
+  header ol.links {
+   border:0;
+   display: block;
+   margin: 0;
+   list-style: none;
+   padding:0;
+   text-align: right;
+  }
+
+  header ul.links a {
+    float:left;
+    padding:0 0.5em;
+  }
+
+  header ul.links li a.last {
+    padding-right: 0;
+  }
+
+  header ul.links li {
+    border-left: 1px solid #d3d3d3;
+    float:left;
+  }
+
+  header ul.links li:first-child {
+    border-left:none;
+  }
+
+  footer .copyright {
+    border-top: 1px solid #d3d3d3;
+    text-align: right;
+    font-size:0.8em;
+    margin-left:-10px;
+    margin-right:-10px;
+    padding-right:10px;
+    padding-left:10px;
+  }
+}
+
+/* HEADER mobile and tablet */
+@media screen and (max-width: 1024px) {
+  header{
+   text-align: left;
+   line-height: 1.75em;
+  }
+
+  header .logo{
+   display:none;
+  }
+
+  header .userinfo,
+  header .projectversion {
+    display: block;
+  }
+
+  header ul.links li:first-child a{
+    padding-left: 0;
+  }
+
+  footer .copyright {
+    text-align: left;
+  }
+}
+
+/* HEADER desktop */
+@media screen and (min-width: 1025px) {
+  header{
+   text-align: center;
+  }
+
+  header .projectname {
+    display: block;
+    margin:0.75em 0 1em 0;
+  }
+
+  header .logo{
+   position:absolute;
+   left:0px;
+   top:-25px;
+  }
+
+  header ul.links,
+  header ol.links {
+   position:absolute;
+   right:20px;
+   top:20px;
+   text-align: right;
+  }
+
+  header ul.links li a.last {
+    padding-right: 0;
+  }
+
+  header .userinfo{
+    position:absolute;
+    left:20px;
+    top:85px;
+  }
+
+  header .projectversion{
+    position:absolute;
+    right:0px;
+    top: 3em;
+    text-align: right;
+  }
+}
+/* ------------------------------------- */
+
+
+/* TABLES */
+table {border-collapse: collapse; border-spacing: 0; margin-bottom: 1.5em}
+table th {text-align: left}
+table tr, 
+table th, 
+table td {padding-right: 1.5em; border-bottom: 0 solid #d3d3d3}
+
+table th {
+  text-align: center;
+  font-weight: normal;
+}
+
+table tfoot th{
+  text-align: left;
+}
+
+table td,
+table th {
+  padding: 3px;
+}
+
+table td.numeric,
+table th.numeric {
+  text-align: right;
+}
+
+table th {
+  background-color: #eeeeee;
+}
+
+
+table tr.odd td, table tr:nth-child(2n+1) td {
+  background-color: #f5f5f5;
+}
+
+table tr.even td, table tr:nth-child(2n) td {
+  background-color: #ffffff;
+}
+
+table thead{
+  border-bottom: 3px solid #aaaaaa;
+  border-top: 1px solid #d3d3d3;
+}
+
+table tfoot {
+  border-bottom: 1px solid #d3d3d3;
+  border-top: 3px solid #aaaaaa;
+}
+
+table td, table th {
+  padding-top: 0.25em;
+  padding-bottom: 0.75em;
+  padding-left: 0.375em;
+  padding-right: 0.5em;
+}
+
+/* ------------------------- */
+
+/* BASE */
+html {height: 100%; font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%} /* Force scrollbar in non-IE and Remove iOS text size adjust without disabling user zoom */
+body {
+  margin: 0; 
+  min-height: 100%; 
+  -webkit-font-smoothing:antialiased; 
+  font-smoothing:antialiased; 
+  text-rendering:optimizeLegibility; 
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  padding-left: 10px;
+  padding-right: 10px;
+} /* Improve default text rendering, handling of kerning pairs and ligatures */
+
+
+/* TYPOGRAPHY */
+/* DEFAULT FONT SETTINGS */
+/* 16px base font size with 150% (24px) friendly, unitless line height and margin for vertical rhythm */
+/* Font-size percentage is based on 16px browser default size */
+body, button, input, select, textarea {font: 100%/1.5 'Segoe UI', Helvetica, Arial, sans-serif; *font-size: 1em; color: #363636;} /* IE7 and older can't resize px based text */
+p, blockquote, q, pre, address, hr, code, samp, dl, ol, ul, form, table, fieldset, menu, img {margin: 0 0 1.5em; padding: 0}
+
+/* Composed to a scale of 12px, 14px, 16px, 18px, 21px, 24px, 36px, 48px, 60px and 72px */
+h1, h2, h3, h4, h5, h6 {font-family: 'Segoe UI', Helvetica, Arial, sans-serif;font-weight:400;color:#222;}
+/*h1 {margin: 0; font-size: 3.75em; line-height: 1.2em; margin-bottom: 0.4em} /* 60px / 72px */*/
+/*h2 {margin: 0; font-size: 3em; line-height: 1em; margin-bottom: 0.5em} /* 48px / 48px */*/
+h1 {margin: 0; font-size: 2.25em; line-height: 1.3333333333333333333333333333333em; margin-bottom: 0.6667em} /* 36px / 48px */ 
+h2 {margin: 0; font-size: 1.5em; line-height: 1em; margin-bottom: 1em} /* 24px / 24px */
+h3 {margin: 0; font-size: 1.3125em; line-height: 1.1428571428571428571428571428571em; margin-bottom: 1.1428571428571428571428571428571em} /* 21px / 24px */
+h4, h5, h6 {margin: 0; font-size: 1.125em; line-height: 1.3333333333333333333333333333333em; margin-bottom: 1.3333333333333333333333333333333em} /* 18px / 24px */
+p, ul, blockquote, pre, td, th, label {margin: 0; font-size: 1em; line-height: 1.5em; margin-bottom: 1.5em} /* 16px / 24px */
+small, p.small {margin: 0; font-size: 0.875em; line-height: 1.7142857142857142857142857142857em; margin-bottom: 1.7142857142857142857142857142857em} /* 14px / 24px */
+
+/* CODE */
+pre {white-space: pre; white-space: pre-wrap; word-wrap: break-word} /* Allow line wrapping of 'pre' */
+pre, code, kbd, samp {font-size: 1em; line-height: 1.5em; margin-bottom: 1.5em; font-family: Menlo, Consolas, 'DejaVu Sans Mono', Monaco, monospace}
+
+/* QUOTES */
+blockquote, q {quotes: none}
+blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none}
+blockquote, q, cite {font-style: italic}
+blockquote {padding-left: 1.5em; border-left: 3px solid #ccc}
+blockquote > p {padding: 0}
+
+/* MEDIA */
+figure {margin: 0}
+img, object, embed, video {max-width: 100%; _width: 100%} /* Fluid images */
+img {border: 0; -ms-interpolation-mode: bicubic} /* Improve IE's resizing of images */
+svg:not(:root) {overflow: hidden} /* Correct IE9 overflow */
+
+/* LISTS */
+ul, ol {list-style-position: inside; padding: 0}
+li ul, li ol {margin: 0 1.5em}
+dl dd {margin-left: 1.5em}
+dt {font-family: 'Segoe UI', Helvetica, Arial, sans-serif;}
+
+/* HYPERLINKS */
+a {text-decoration: none; color:#3498db;}
+a:hover {text-decoration: underline}
+a:focus {outline: thin dotted}
+a:hover, a:active {outline: none} /* Better CSS Outline Suppression */
+
+/* MEDIA */
+figure {margin: 0}
+img, object, embed, video {max-width: 100%; _width: 100%} /* Fluid images */
+img {border: 0; -ms-interpolation-mode: bicubic} /* Improve IE's resizing of images */
+svg:not(:root) {overflow: hidden} /* Correct IE9 overflow */
+
+/* ABBREVIATION */
+abbr[title], dfn[title] {border-bottom: 1px dotted #333; cursor: help}
+
+/* MARKED/INSERTED/DELETED AND SELECTED TEXT */
+ins, mark {text-decoration: none}
+mark {background: #e5e197}
+ins {background: #e5c0dd}
+del {text-decoration: line-through}
+
+/* OTHERS */
+strong, b, dt { font-weight: bold}
+dfn {font-style: italic}
+var, address {font-style: normal}
+sub, sup {font-size: 75%; line-height: 0; position: relative; vertical-align: baseline} /* Position 'sub' and 'sup' without affecting line-height */
+sup {top: -0.5em} /* Move superscripted text up */
+sub {bottom: -0.25em} /* Move subscripted text down */
+
+/* PROJECT SPECIFIC STYLES*/
+.field-name {
+  color: #999999;
+}
+
+.field-name.right {
+  text-align: right;
+}
+
+textarea.error,
+select.error,
+input.error{
+  background-color: #fef1ec;
+}
+
+.error {
+  color:#fe6d6d;
+}
+
+.panel {
+  padding:1.5em 1.5em 0;
+  text-align: justify;
+}
+
+div.sourceCode {
+  background-color:#f3f3f3;
+  padding:1em;
+  margin-bottom: 1.5em;
+}
+
+
