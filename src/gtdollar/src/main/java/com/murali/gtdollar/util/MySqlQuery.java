@@ -112,7 +112,7 @@ public class MySqlQuery {
 
     try {
       conn = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/phoenix", "phoenix", "password");
+        "jdbc:mysql://node27265-wallettransfer.j.scaleforce.net", "root", "I4dSw4069p");
     } catch (SQLException e) {
       System.out.print(e.getMessage());
     }

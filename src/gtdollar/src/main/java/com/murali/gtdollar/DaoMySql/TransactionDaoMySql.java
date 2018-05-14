@@ -49,7 +49,7 @@ public class TransactionDaoMySql implements TransactionDao{
         } catch (SQLException ex) {
             Logger.getLogger(TransactionDaoMySql.class.getName()).log(Level.SEVERE, null, ex);
         }
-    return "y";    
+    return CurrentTransaction.getSuccess();    
     }
 
     @Override

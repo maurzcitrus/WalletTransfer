@@ -19,7 +19,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -56,12 +58,13 @@ public class TransactionResource {
     Transaction current = new Transaction();
     current.setFrom(transferer);
     current.setTo(transferee);
+    current.setSuccess("true");
     current.setTransferAmount(transferAmount.setScale(2, RoundingMode.CEILING));
     
     success = transactionDao.transferAmount(current);
     return success;
     }else{
-     return null;   
+       throw new WebApplicationException("Please Provide Correct Details", Response.Status.BAD_REQUEST);
     }
   }
    
