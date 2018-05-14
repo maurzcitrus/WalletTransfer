@@ -65,6 +65,9 @@ public class TransactionDaoMySql implements TransactionDao{
         
         latestTrasacion.setTransaction(trsn);
         
+        Transaction success  = findOneTransaction(email);
+        latestTrasacion.setSuccess(success.getSuccess());
+        
         return latestTrasacion;
     }
     
