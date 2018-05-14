@@ -10,8 +10,9 @@ A RESTful API to facilitate Wallet Transfer.
 
 
 ### How to run
+The root Url
 ```sh
-
+http://node27266-wallettransfer.j.scaleforce.net/wallet
 ```
 
 
