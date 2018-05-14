@@ -48,10 +48,9 @@ public class AccountResource {
     Account result = new Account();
     result.setEmail(email);
     result.setBalance(new BigDecimal(10000.00).setScale(2, RoundingMode.CEILING));
-    result.setSuccess("false");
+    result.setSuccess("true");
     
     success = dao.registerAccount(result);
-    success.setSuccess("true");
     return success;
   
   }
@@ -66,7 +65,7 @@ public class AccountResource {
         
         Account result = new Account();
         result.setEmail(email);
-        result.setSuccess("Y");
+        result.setSuccess("true");
     
         success = dao.retrieveCurrentBalance(result);
     
