@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.murali.gtwallet.DaoImpl;
+package com.murali.gtdollar.DaoMySql;
 
 import java.util.List;
-import com.murali.gtwallet.Dao.AccountDao;
-import com.murali.gtwallet.Model.Account;
-import com.murali.gtwallet.util.MySqlQuery;
+import com.murali.gtdollar.Dao.AccountDao;
+import com.murali.gtdollar.Model.Account;
+import com.murali.gtdollar.util.MySqlQuery;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
